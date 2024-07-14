@@ -1,0 +1,3 @@
+This mod requires Tribes of the East with official patch 3.1 installed!
+
+IMPORTANT: This mod is incompatible with almost any other mod for Heroes 5. Verify with the author if it was made to be compatible with Heroes 5.5. Also be aware that various custom maps uploaded on the internet contain 'mods' hidden in the .h5m files that can cause serious bugs. We now have a large database on Discord of popular maps from maps4heroes.com converted to be compatible with H55, always use these instead of the originals. If a map with lots of likes is not on our Discord, very likely it was too heavily modded and causes serious bugs. A 'clean' compatible user map can be recognized by opening it with a common archiver like 7zip or winrar and check if it only contains a 'Maps' folder.

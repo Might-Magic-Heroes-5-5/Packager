@@ -1,0 +1,24 @@
+﻿[LangOptions]
+LanguageName=English
+LanguageID=$0409
+LanguageCodePage=0
+DialogFontName=Verdana
+DialogFontSize=8
+WelcomeFontName=Aerial
+WelcomeFontSize=10
+TitleFontName=Arial
+TitleFontSize=12
+CopyrightFontName=Verdana
+CopyrightFontSize=12
+
+[Messages]
+SetupAppTitle=Might and Magic Heroes 5.5 Install Program
+SetupWindowTitle=Might and Magic Heroes 5.5 Install Program
+UninstallAppTitle=Uninstall
+UninstallAppFullTitle=Might and Magic Heroes 5.5 Uninstall
+
+; *** Common wizard text
+ClickNext=If you do not wish to continue with installation, click "Cancel" to quit the setup, otherwise click "Next".
+BeveledLabel=MAKE SURE PREVIOUS VERSIONS OF MIGHT AND MAGIC HEROES 5.5 ARE NOT INSTALLLED
+WelcomeLabel1=Welcome to the [name] Install program.
+WelcomeLabel2=This program allows you to install [name/ver] on your hard drive.%n%nPlease UNINSTALL any older versions of this modification before continuing (using the uninstaller)! It is recommended before proceeding, to make sure that no other programs are running.
