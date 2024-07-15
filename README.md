@@ -14,35 +14,107 @@ Any contributions to this project are appreciated!
 Place your mod files in a folder called **files** in the main directory. This is what the packager will made the installer from.
 
 ### Details
-Double click config/variables.iss to open it with Inno Setup editor.
-```
-// Application variables
-; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
-; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-#define M55_ID        "55EA9482-ECB1-439D-951C-798B8CC2D68D"                   ## Generate unique ID that will represent your mod. It must always be the same.
-#define M55_Name      "Might & Magic Heroes 5.5"                               ## Full name of your mod
-#define M55_StartName "Might & Magic - Heroes 5.5"                             ## Name of the Windows StartGroup folder that will hold mod shortcuts
-#define M55_Version   "RC19f"                                                  ## Version of your mod
-#define M55_Publisher "MMH55 team"                                             ## The author of the mod
-#define M55_URL       "https://www.moddb.com/mods/might-magic-heroes-55"       ## (Optional) Website of your mod
-#define M55_Support   "https://discord.gg/khKPUrKxC4"                          ## (Optional) Support link/discord or other link for your mod.
-#define M55_SetupName "MMH55_" + M55_Version                                   ## File name of installer the builder will create.
+Double click config/variables.iss to open it with Inno Setup editor and set your app variables.
 
-// Files to check for previous installation                                    ## (Optional) if not set to empty string, the installer will scan
-#define M55_CHECK1    "bin\H5_AIProcess_31j.exe"                               ## the target directory for those files and if found will cancel the installation.
-#define M55_CHECK2    "bin\MMH55_64.exe"                                       ## Use those to prevent the user to create installations on top of already existing ones.
-#define M55_CHECK3    "data\MMH55-Stats.pak"
+---
+
+#### APP_ID
+You must have such value as it uniquely identifies this application. Do not use the same value in installers for other applications. To generate a GUID, inside the Inno Setup IDE click Tools -> Generate GUID.
+```env
+define APP_ID        "55EA9482-ECB1-439D-951C-798B8CC2D68D"
+```
+
+---
+
+#### APP_Name
+That is the official name of the app
+```env
+#define APP_Name      "Might & Magic Heroes 5.5"
+```
+
+---
+
+#### APP_StartName
+That is the name of the Windows StartGroup folder that will hold mod shortcuts
+```env
+#define APP_StartName "Might & Magic - Heroes 5.5"
+```
+
+---
+
+#### APP_Version
+Specify the version of your mod
+```env
+#define APP_Version   "RC19f" 
+```
+
+---
+
+#### APP_Publisher
+The author of the mod
+```env
+#define APP_Publisher "MMH55 team"
+```
+
+---
+
+#### APP_URL
+(Optional) The official website of your mod
+```env
+#define APP_URL       "https://www.moddb.com/mods/might-magic-heroes-55"
+```
+
+---
+
+#### APP_Support
+ (Optional) Support link, email address or other contact information.
+```env
+#define APP_Support   "https://discord.gg/khKPUrKxC4"
+```
+
+---
+
+#### APP_SetupName
+File name of the installer the builder will create.
+```env
+#define APP_SetupName "MMH55_" + APP_Version
+```
+
+---
+
+#### APP_Language
+Translation for all default texts that are not in config/texts/ folder. Possible values here are
+<sub><kbd>Armenian, BrazilianPortuguese, Bulgarian, Catalan, Corsican, Czech, Danish, Dutch, Finnish, French, German, Hebrew, Hungarian, Icelandic, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Slovak, Slovenian, Spanish, Turkish, Ukrainian</kbd></sub>
+
+```env
+#define APP_Language  "English"
+```
+
+---
+
+#### APP_CHECK1, APP_CHECK2 and APP_CHECK3
+(Optional) if not set to empty string, the installer will scan the target directory for those files and if found will cancel the installation. Use to prevent  installations on top of already existing ones.
+
+Default:<sub><kbd>#define APP_CHECK1  ""<br>
+#define APP_CHECK2  ""<br>
+#define APP_CHECK3  ""
+</kbd></sub>
+
+```env
+#define APP_CHECK1    "bin\H5_AIProcess_31j.exe"
+#define APP_CHECK2    "bin\MMH55_64.exe"
+#define APP_CHECK3    "data\MMH55-Stats.pak"
 ```
 
 ### Shortcuts
 Double click config/icons.iss to open it with Inno Setup editor.
 To add desktop shortcuts use the example below:
 ```
-Name: "{autodesktop}\Main Mod executable";    Filename: "{app}\path\to\executable.exe";
+Name: "{autodesktop}\desktop shortcut name";    Filename: "{app}\path\to\executable.exe";
 ```
 To add Windows StartGroup shortcuts use the example below:
 ```
-Name: "{group}\MMH5.5 Play";                   Filename: "{app}\bin\MMH55.exe"
+Name: "{group}\start group shortcut name";      Filename: "{app}\path\to\executable.exe";
 ```
 
 Full example
@@ -61,7 +133,7 @@ Name: "{group}\MMH5.5 Editor (64bit) (ARMG)";  Filename: "{app}\bin\MMH55_Editor
 Name: "{group}\MMH5.5 Uninstall";              Filename: "{app}\unins000.exe"
 ```
 ### Wizard texts
-To customize the text information provided by the wizard customize the files in config/text folder.
+To customize the text information provided by the wizard edit the files in config/text folder. Make sure you pair the custom text with proper [wizard language](https://github.com/Might-Magic-Heroes-5-5/Packager/tree/wip1#app_language).
 
 - information.txt is in control of the text provided on information page
 - Messages.txt is more of a master control file for the whole wizard. The user has control over the fonts, their sizes as well as the content of some of Inno Setup predefined messages.

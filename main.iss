@@ -14,6 +14,12 @@
 #define C_REGISTRY_TOE_STEAM 'SOFTWARE\WOW6432Node\Valve\Steam\Apps\15370';
 #define C_STEAM_TOE          '\steamapps\common\Heroes of Might and Magic 5 Tribes of the East';
 
+#if APP_LANGUAGE == "English"
+  #define V_LANGUAGE_SET "compiler:Default.isl,config\texts\Messages.txt"
+#else
+  #define V_LANGUAGE_SET "compiler:Default.isl,compiler:Languages\" + APP_LANGUAGE + ".isl,config\texts\Messages.txt"
+#endif
+
 [Code]
 function ReadSteamLibraryFolders(FilePath: string): TArrayOfString;
 var
@@ -63,7 +69,8 @@ begin
   Result := ExpandConstant('{#C_PATH_TOE_DEFAULT}');
   RootKey := HKEY_LOCAL_MACHINE;
 
-  if RegGetSubkeyNames(RootKey, ExpandConstant('{#C_REGISTRY_TOE_CD}'), SubkeyNames) then
+  Subkey := ExpandConstant('{#C_REGISTRY_TOE_CD}');
+  if RegGetSubkeyNames(RootKey, Subkey, SubkeyNames) then
   begin
     for I := 0 to GetArrayLength(SubkeyNames) - 1 do
     begin
@@ -75,7 +82,8 @@ begin
     end;
   end;
 
-  if RegGetSubkeyNames(RootKey, ExpandConstant('{#C_REGISTRY_TOE_GOG}'), SubkeyNames) then
+  Subkey := ExpandConstant('{#C_REGISTRY_TOE_GOG}');
+  if RegGetSubkeyNames(RootKey, Subkey, SubkeyNames) then
   begin
     for I := 0 to GetArrayLength(SubkeyNames) - 1 do
     begin
@@ -93,18 +101,16 @@ begin
     end;
   end;
   
-  if RegKeyExists(RootKey, ExpandConstant('{#C_REGISTRY_TOE_STEAM}')) then
+  Subkey := ExpandConstant('{#C_REGISTRY_TOE_STEAM}');
+  if RegKeyExists(RootKey, Subkey) then
   begin
-    MsgBox('So far so good.', mbInformation , MB_OK);
-      
-    RegQueryStringValue(RootKey, ExpandConstant('{#C_REGISTRY_STEAM}'), 'InstallPath', SteamPath)
+    Subkey := ExpandConstant('{#C_REGISTRY_STEAM}');
+    RegQueryStringValue(RootKey, Subkey, 'InstallPath', SteamPath)
     SteamPath := SteamPath + '\steamapps\libraryfolders.vdf';
-    MsgBox('Even better' + SteamPath, mbInformation, MB_OK);
     InstallDirs := ReadSteamLibraryFolders(SteamPath);
     for I := 0 to GetArrayLength(InstallDirs) - 1 do
     begin
       if DirExists(InstallDirs[I] + ExpandConstant('{#C_STEAM_TOE}')) then
-      MsgBox('very  close at ' + InstallDirs[I] + ExpandConstant('{#C_STEAM_TOE}'), mbInformation, MB_OK);
       begin;
         Result:= InstallDirs[I] + ExpandConstant('{#C_STEAM_TOE}'); 
       end;
@@ -143,6 +149,7 @@ WizardStyle=modern
 DirExistsWarning=no
 UninstallDisplayName={#APP_Name}
 DisableWelcomePage=no
+AppendDefaultDirName=no
 //Texts
 InfoBeforeFile=config/texts/information.txt
 //Images
@@ -150,8 +157,9 @@ SetupIconFile=config/images/setup_file.ico
 WizardImageFile=config/images/side.bmp                       
 WizardSmallImageFile=config/images/top_right.bmp
 
+
 [Languages]
-Name: "english"; MessagesFile: "config\texts\Messages.txt"
+Name: "default"; MessagesFile: "{#V_LANGUAGE_SET}"
 
 [Files]
 Source: "files\*"; DestDir: "{app}"; Flags: recursesubdirs
