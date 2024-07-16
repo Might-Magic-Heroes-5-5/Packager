@@ -21,7 +21,7 @@ Double click config/variables.iss to open it with Inno Setup editor and set your
 #### APP_ID
 You must have such value as it uniquely identifies this application. Do not use the same value in installers for other applications. To generate a GUID, inside the Inno Setup IDE click Tools -> Generate GUID.
 ```env
-define APP_ID        "55EA9482-ECB1-439D-951C-798B8CC2D68D"
+#define APP_ID        "55EA9482-ECB1-439D-951C-798B8CC2D68D"
 ```
 
 ---
