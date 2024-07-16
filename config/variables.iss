@@ -9,6 +9,7 @@
 #define APP_URL       "https://www.moddb.com/mods/might-magic-heroes-55"
 #define APP_Support   "https://discord.gg/khKPUrKxC4"
 #define APP_SetupName "MMH55_" + APP_Version
+#define APP_Language  "English"
 
 // Files to check for previous installation
 #define APP_CHECK1    "bin\H5_AIProcess_31j.exe"
