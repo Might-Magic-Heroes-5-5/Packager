@@ -23,6 +23,7 @@ You must have such value as it uniquely identifies this application. Do not use 
 ```env
 #define APP_ID        "55EA9482-ECB1-439D-951C-798B8CC2D68D"
 ```
+![image](https://github.com/user-attachments/assets/25843985-25dc-4b8a-8b53-285e1fc904dd)
 
 ---
 
