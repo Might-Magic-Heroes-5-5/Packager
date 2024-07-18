@@ -7,7 +7,7 @@
 #define C_REGISTRY_TOE_CD    'SOFTWARE\WOW6432Node\Ubisoft\Heroes of Might and Magic V - Tribes of the East';
 
 // GOG
-#define C_REGISTRY_TOE_GOG   'SOFTWARE\GOG.com\Games';
+#define C_REGISTRY_TOE_GOG   'SOFTWARE\WOW6432Node\GOG.com\Games';
 
 // Steam
 #define C_REGISTRY_STEAM     'SOFTWARE\WOW6432Node\Valve\Steam';
@@ -74,6 +74,7 @@ begin
   begin
     for I := 0 to GetArrayLength(SubkeyNames) - 1 do
     begin
+      //Log('This is a debug message.' + SubkeyNames[I]);
       if RegQueryStringValue(RootKey, Subkey + '\' + SubkeyNames[I], 'InstallPath', InstallPath) then
       begin
         Result := InstallPath;
@@ -143,13 +144,16 @@ DefaultDirName={code:GetOtherAppPath|{#C_PATH_TOE_DEFAULT}}
 DefaultGroupName={#APP_StartName}
 OutputDir=output
 OutputBaseFilename={#APP_SetupName}
-Compression=lzma
+Compression=none
 SolidCompression=yes
 WizardStyle=modern
 DirExistsWarning=no
 UninstallDisplayName={#APP_Name}
 DisableWelcomePage=no
 AppendDefaultDirName=no
+AllowRootDirectory=yes
+UsePreviousAppDir=no
+
 //Texts
 InfoBeforeFile=config/texts/information.txt
 //Images
