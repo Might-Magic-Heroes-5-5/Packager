@@ -9,5 +9,6 @@ Name: "{group}\MMH5.5 Utility (ARMG)";         Filename: "{app}\bin\MMH55_Utilit
 Name: "{group}\MMH5.5 Utility (64bit) (ARMG)"; Filename: "{app}\bin\MMH55_Utility_64.exe"
 Name: "{group}\MMH5.5 Editor (ARMG)";          Filename: "{app}\bin\MMH55_Editor.exe"
 Name: "{group}\MMH5.5 Editor (64bit) (ARMG)";  Filename: "{app}\bin\MMH55_Editor_64.exe"
+Name: "{group}\MMH5.5 MapMixer";               Filename: "{app}\bin\MMH55_Mapmixer.exe"
 Name: "{group}\MMH5.5 Uninstall";              Filename: "{app}\unins000.exe"
 Name: "{group}\MMH5.5 ARMG Manual";            Filename: "{app}\ARMG Manual V2.7.pdf"
