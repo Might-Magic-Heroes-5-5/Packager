@@ -169,3 +169,4 @@ Name: "default"; MessagesFile: "{#V_LANGUAGE_SET}"
 Source: "files\*"; DestDir: "{app}"; Flags: recursesubdirs
 
 #include "config\icons.iss"
+#include "config\delete.iss"

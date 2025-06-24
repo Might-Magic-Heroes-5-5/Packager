@@ -4,7 +4,7 @@
 #define APP_ID        "CEC93C99-EB3D-4EBE-B0BE-AE228E5B47AE"
 #define APP_Name      "Might & Magic Heroes 5.5"
 #define APP_StartName "Might & Magic - Heroes 5.5"
-#define APP_Version   "RC19e"
+#define APP_Version   "RC19f"
 #define APP_Publisher "MMH55 team"
 #define APP_URL       "https://www.moddb.com/mods/might-magic-heroes-55"
 #define APP_Support   "https://discord.gg/khKPUrKxC4"
